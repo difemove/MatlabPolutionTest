@@ -1,0 +1,26 @@
+%% Con ayuda de la función plot_google_map ( thankas to Zohar Bar-Yehuda) se realiza la gráfica de los datos 
+% de polución obtenidos sobre el mapa de bogotá. 
+
+%Primero se extraen los puntos.
+
+function polution(lat,lon,measure)
+   
+    for i=1:length(lat)-1
+        if  measure(i)<335.5
+           plot(lon(i:i+1),lat(i:i+1),'Color',[0 1 0],'LineWidth',5)
+        elseif measure(i)>=335.5 && measure(i)<341
+           plot(lon(i:i+1),lat(i:i+1),'Color',[0.8 0.8 0],'LineWidth',5)
+        elseif measure(i)>=341 && measure(i)<346.5
+            plot(lon(i:i+1),lat(i:i+1),'LineStyle','-','Color',[0.6 0.6 0],'LineWidth',5)
+        elseif measure(i)>=346.5 && measure(i)<352
+            plot(lon(i:i+1),lat(i:i+1),'LineStyle','-','Color',[1 0.5 0],,'LineWidth',5)
+        elseif measure(i)>=352 && measure(i)<357
+            plot(lon(i:i+1),lat(i:i+1),'LineStyle','-','Color',[0.7 0.2 0],'MarkerSize',1000)
+        elseif measure(i)>=357.5
+            plot(lon(i:i+1),lat(i:i+1),'LineStyle','-','Color',[0.7 0 0],'MarkerSize',1000)
+         end
+        hold on;
+    end
+   %  plot_google_map
+     axis([min(lon) max(lon) min(lat) max(lat)]);
+end
